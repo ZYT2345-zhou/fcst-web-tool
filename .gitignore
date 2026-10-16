@@ -1,0 +1,27 @@
+# ---------- Python ----------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+
+# ---------- 访问密码 ----------
+# 绝对不要提交带密码的 secrets 文件，部署时在平台上单独配置
+.streamlit/secrets.toml
+
+# ---------- 业务数据 ----------
+# 防止把真实的 PSI / 提货跟进表 / 主数据误传到 GitHub
+*.xlsx
+*.xls
+*.xlsm
+*.csv
+~$*
+
+# ---------- 编辑器 / 系统 ----------
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
