@@ -16,6 +16,7 @@
 | `Separation of TOB and TOC dmd app.py` | 工具 03 的计算脚本（常规 · 客户类型） | 只读 |
 | `Separation of TOB and TOC dmd app month_end.py` | 工具 04 的计算脚本（月末 · 客户类型） | 只读 |
 | `requirements.txt` | Python 依赖清单 | 加依赖时才动 |
+| `make_sample_data.py` | 生成一套假的练习数据（每个工具一个子目录） | 新手练手用，可删 |
 | `.streamlit/config.toml` | 服务配置（上传上限 200MB 等） | 一般不用动 |
 | `.streamlit/secrets.toml.example` | 密码配置样例，复制成 `secrets.toml` 用 | 本地跑才需要 |
 
@@ -69,6 +70,26 @@ streamlit run planning_workbench.py
   3. Streamlit Cloud 后台的 Settings → Secrets
 
 > 没配密码时，`planning_workbench.py` 会直接报错提示你先设置；四个原脚本则只给个警告、不拦截。
+
+### 第一次用，先拿假数据练手
+
+不想拿真实数据试错的话，直接生成一套假的：
+
+```bash
+python make_sample_data.py
+```
+
+会在桌面生成 `fcst-示例数据/`，里面按工具分了四个子目录，文件名前面的数字就是网页上上传框的顺序：
+
+```
+01-常规总表/          1-PSI文件.xlsx  2-当月提货跟进表.xlsx  4-FCST总表模板.xlsx  5-主数据.xlsx  + 生成结果示例.xlsx
+02-月末总表/          多一个 3-次月提货跟进表.xlsx
+03-常规-客户类型/     提货表里多一列「客户类型」
+04-月末-客户类型/     3、4 的合集
+```
+
+每个目录里的 `生成结果示例.xlsx` 是脚本自己跑出来的正确结果，可以拿来对照你生成的对不对。
+这些文件全是随机造的，不含任何真实业务信息，用完直接删掉即可。
 
 ---
 
